@@ -17,9 +17,6 @@
 #include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-
-#define IPC_SIZE 100
-
 char** get_arguments(int argc, char** argv){
     int arg_length = argc;
     char**  cmd_args = NULL;
