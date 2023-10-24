@@ -9,6 +9,14 @@
  * For example:  ./time ls -l
  * will return an array consisting of {"ls","-l", NULL}
  ************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 char** get_arguments(int argc, char** argv){
     int arg_length = argc;
     char**  cmd_args = NULL;
@@ -73,4 +81,5 @@ int main(int argc, char** argv)
     }
     
     return status;
+
 }
