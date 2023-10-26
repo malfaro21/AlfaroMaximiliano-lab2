@@ -1,4 +1,6 @@
 // TODO: add the appropriate header files here
+#include <stdio.h>
+#include <stdlib.h>
 
 
 /**************************************************************
