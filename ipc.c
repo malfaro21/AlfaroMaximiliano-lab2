@@ -21,6 +21,14 @@ char* ipc_create(int size){
     char* ptr;
     
     fd = shm_open("lab2",O_CREAT | O_RDWR, 0666);
+    if(fd == -1){
+        perror("shm_open");
+        exit(1);
+    }
+
+    if(ftruncate(fd,size) == -1){
+        
+    }
     // TODO: create the shared memory object called lab2
 
     // TODO: configure the size of the shared memory object 
