@@ -31,6 +31,14 @@ char* ipc_create(int size){
         close(fd);
         exit(1);
     }
+
+    ptr = mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if(ptr ==MAP_FAILED){
+        perror("mmap");
+        close(fd);
+        exit(1);
+    }
+    close(fd);
     // TODO: create the shared memory object called lab2
 
     // TODO: configure the size of the shared memory object 
