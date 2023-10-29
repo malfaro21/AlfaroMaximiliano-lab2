@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+
 char** get_arguments(int argc, char** argv){
     int arg_length = argc;
     char**  cmd_args = NULL;
@@ -46,6 +47,9 @@ int main(int argc, char** argv)
         fprintf(stderr,"SYNOPSIS: %s <cmd> <cmd arguments>\n",argv[0]);
         return 1;
     }
+    int shmid;
+    char *ipc_ptr = NULL;
+
     
     // TODO: call ipc_create to create shared memory region to which parent
     //       child have access.
