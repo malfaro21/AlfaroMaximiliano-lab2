@@ -29,6 +29,7 @@ char* ipc_create(int size){
     if(ftruncate(fd,size) == -1){
         perror("ftruncate");
         close(fd);
+        exit(1);
     }
     // TODO: create the shared memory object called lab2
 
