@@ -51,10 +51,19 @@ int main(int argc, char** argv)
     char *ipc_ptr = NULL;
 
     shmid = shmget(IPC_PRIVATE, sizeof(struct timeval), IPC_CREAT |0666);
+    if(shmid<0){
+        perror("shmget");
+        exit(1);
+    }
     // TODO: call ipc_create to create shared memory region to which parent
     //       child have access.
 
     /* fork a child process */
+    ipc_ptr = (char*) shmat(shmid, NULL, 0);
+    if(ipc_ptr == (char*)-1){
+        perror("shmat");
+        exit(1);
+    }
     pid = fork();
 
     if (pid < 0) { /* error occurred */
