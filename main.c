@@ -81,6 +81,8 @@ int main(int argc, char** argv)
         *(struct timeval*) ipc_ptr = start_time;
         char** command_args = get_arguments(argc, argv);
         execvp(command_args[0], command_args);
+        perror("execvp");
+        exit(1);
 
     }
     else { /* parent process */
@@ -94,6 +96,7 @@ int main(int argc, char** argv)
         // TODO: close IPC
 
         // NOTE: DO NOT ALTER THE LINE BELOW.
+        
         printf("Elapsed time %.5f\n",elapsed_time(&start_time, &current_time));
     }
     
