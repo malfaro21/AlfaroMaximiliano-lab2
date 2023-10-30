@@ -96,7 +96,11 @@ int main(int argc, char** argv)
         // TODO: close IPC
 
         // NOTE: DO NOT ALTER THE LINE BELOW.
-        
+        wait(&status);
+        gettimeofday(&current_time, NULL);
+        start_time = *(struct timeval*) ipc_ptr;
+        shmdt(ipc_ptr);
+        shmctl(shmid, IPC_RMID, NULL);
         printf("Elapsed time %.5f\n",elapsed_time(&start_time, &current_time));
     }
     
