@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -wall -o
+CFLAGS = -wall -g
 TARGET = time
 OBJS = ipc.o time.o main.o
 
