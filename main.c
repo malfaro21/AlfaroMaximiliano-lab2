@@ -48,7 +48,6 @@ int main(int argc, char** argv)
         return 1;
     }
     int shmid;
-    char *ipc_ptr = NULL;
 
     shmid = shmget(IPC_PRIVATE, sizeof(struct timeval), IPC_CREAT |0666);
     if(shmid<0){
