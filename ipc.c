@@ -23,19 +23,16 @@ char* ipc_create(int size){
     
     fd = shm_open("lab2",O_CREAT | O_RDWR, 0666);
     if(fd == -1){
-        perror("shm_open");
         exit(1);
     }
 
     if(ftruncate(fd,size) == -1){
-        perror("ftruncate");
         close(fd);
         exit(1);
     }
 
     ptr = mmap(0, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     if(ptr ==MAP_FAILED){
-        perror("mmap");
         close(fd);
         exit(1);
     }

@@ -56,7 +56,6 @@ int main(int argc, char** argv)
 
     shmid = shmget(IPC_PRIVATE, sizeof(struct timeval), IPC_CREAT |0666);
     if(shmid<0){
-        perror("shmget");
         exit(1);
     }
     // TODO: call ipc_create to create shared memory region to which parent
@@ -65,7 +64,6 @@ int main(int argc, char** argv)
     /* fork a child process */
     ipc_ptr = (char*) shmat(shmid, NULL, 0);
     if(ipc_ptr == (char*)-1){
-        perror("shmat");
         exit(1);
     }
     pid = fork();
@@ -84,7 +82,6 @@ int main(int argc, char** argv)
         gettimeofday(&start_time, NULL);
         *(struct timeval*) ipc_ptr = start_time;
         execvp(command, command_args);
-        perror("execvp");
         exit(1);
 
     }
