@@ -77,6 +77,10 @@ int main(int argc, char** argv)
         
         // TODO: get the list of arguments to be used in execvp() and 
         // execute execvp()
+        gettimeofday(&start_time, NULL);
+        *(struct timeval*) ipc_ptr = start_time;
+        char** command_args = get_arguments(argc, argv);
+        execvp(command_args[0], command_args);
 
     }
     else { /* parent process */
