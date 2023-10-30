@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     int shmid;
     char *ipc_ptr = NULL;
 
-    
+    shmid = shmget(IPC_PRIVATE, sizeof(struct timeval), IPC_CREAT |0666);
     // TODO: call ipc_create to create shared memory region to which parent
     //       child have access.
 
