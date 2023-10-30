@@ -49,6 +49,8 @@ int main(int argc, char** argv)
         fprintf(stderr,"SYNOPSIS: %s <cmd> <cmd arguments>\n",argv[0]);
         return 1;
     }
+    command = argv[1];
+    command_args = get_arguments(argc, argv);
     int shmid;
 
     shmid = shmget(IPC_PRIVATE, sizeof(struct timeval), IPC_CREAT |0666);
@@ -80,8 +82,7 @@ int main(int argc, char** argv)
         // execute execvp()
         gettimeofday(&start_time, NULL);
         *(struct timeval*) ipc_ptr = start_time;
-        char** command_args = get_arguments(argc, argv);
-        execvp(command_args[0], command_args);
+        execvp(command, command_args);
         perror("execvp");
         exit(1);
 
