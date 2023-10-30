@@ -18,6 +18,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
+
 double elapsed_time(struct timeval* start_time, struct timeval* end_time);
 
 char** get_arguments(int argc, char** argv){
